@@ -1,32 +1,35 @@
+# The name displayed in the workflow
 name: Hello World with Python
 
+# Events that start the workflow
 on:
-
+  # Run code when pushed to main
   push:
-
+    # Limit what branches get automatic push triggers
     branches:
       - main
-
+  # Adds a Run Workflow button
   workflow_dispatch:
 
+# The jobs within the workflow
 jobs:
-
+  # Internal identifier for this job
   hello-python:
-
+    # Name used on the actions page
     name: Run the Python Hello World program
-
+    # Uses a temporary Unbuntu virtual machine
     runs-on: ubuntu-latest
-
+    # The steps within the process.
     steps:
-
+      # Download the files from the repository
       - name: Check out the repository
-
+        # Uses the checkout function, version 4
         uses: actions/checkout@v4
-
+      # Execute the Python file
       - name: Run the Python program
-
+        # Environment variables available to the program
         env:
-
+          #Hello.py reads this within the program
           WHO_TO_GREET: 'GitHub Actions Student'
-
+        #Run the file itself mostly focused on the Hello class.
         run: python hello.py
